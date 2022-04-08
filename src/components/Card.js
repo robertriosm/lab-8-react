@@ -1,8 +1,11 @@
 import '../index.css'
 
-export default function Card({ card, handleChoice, flipped }) {
+export default function Card({ card, handleChoice, flipped, disabled }) {
     
     const cardClick = () => {
+        if (!disabled) {
+            handleChoice(card)
+        }
         handleChoice(card)
     }
     

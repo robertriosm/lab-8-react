@@ -9,7 +9,8 @@ const cardImages = [
     {"src": "/img/skeletons.png", matched: false },
     {"src": "/img/royal_giant.png", matched: false },
     {"src": "/img/wizard.png", matched: false },
-
+    {"src": "/img/mega_knight.png", matched: false },
+    {"src": "/img/princess.png", matched: false },
 ]
 
 export default function App () {
@@ -67,8 +68,9 @@ export default function App () {
 
     return (
         <div className='App'>
-            <h1>Memory Game</h1>
-            <button onClick={shuffleCards}>Start</button>
+            <h1>Royale Memory Game</h1>
+            <button onClick={shuffleCards}>Restart</button>
+            <p>Jugadas: {turns}</p>
             <div className='card-grid'>
                 {cards.map(card => (
                     <Card key={card.id} card={card} handleChoice={handleChoice}
@@ -77,7 +79,7 @@ export default function App () {
                     />  
                 ))}
             </div>
-            <p>Jugadas: {turns}</p>
+            <p>Laboratorio 8. Roberto Rios, 20979.</p>
         </div>
     );
 }
