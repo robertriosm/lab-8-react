@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+* {
+    font-family: 'Fredoka One';
+}
+
+h1 {
+    color: white;
+}
+
+body {
+    background: url('/public/img/bg.png');
+}
+
+.card-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}   
+
+.card {
+    position: relative;
+}
+
+.card img {
+    height: 200px;
+    display: block;
+
+}
