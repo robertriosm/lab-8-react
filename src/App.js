@@ -17,11 +17,15 @@ export default function App () {
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
+    const [disabled, setDisabled] = useState(false)
 
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
             .sort(() => Math.random() - 0.5)
             .map((card) => ({...card, id: Math.random()}))
+        
+        setChoiceOne(null)
+        setChoiceTwo(null)
         setCards(shuffledCards)  
         setTurns(0)
     }
@@ -32,6 +36,7 @@ export default function App () {
 
     useEffect(() => {
         if (choiceOne && choiceTwo) {
+            setDisabled(true)
             if (choiceOne.src === choiceTwo.src) {
                 setCards(prevCards => {
                     return prevCards.map(card => {
@@ -49,13 +54,16 @@ export default function App () {
         } 
     }, [choiceOne, choiceTwo])
 
-    console.log(cards)
-
     const resetIt = () => {
         setChoiceOne(null)
         setChoiceTwo(null)
         setTurns(prevTurns => prevTurns + 1)
+        setDisabled(false)
     }
+
+    useEffect(() => {
+        shuffleCards()
+    }, [])
 
     return (
         <div className='App'>
@@ -63,9 +71,13 @@ export default function App () {
             <button onClick={shuffleCards}>Start</button>
             <div className='card-grid'>
                 {cards.map(card => (
-                    <Card key={card.id} card={card} handleChoice={handleChoice} flipped={card === choiceOne || card === choiceTwo || card.matched}/>  
+                    <Card key={card.id} card={card} handleChoice={handleChoice}
+                        flipped={card === choiceOne || card === choiceTwo || card.matched}
+                        disabled={disabled}
+                    />  
                 ))}
             </div>
+            <p>Jugadas: {turns}</p>
         </div>
     );
 }
