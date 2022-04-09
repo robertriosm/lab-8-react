@@ -19,6 +19,7 @@ export default function App () {
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
+    const [won, setWon] = useState(false)
 
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
@@ -29,6 +30,7 @@ export default function App () {
         setChoiceTwo(null)
         setCards(shuffledCards)  
         setTurns(0)
+        setWon(false)
     }
 
     const handleChoice = (card) => {
@@ -50,7 +52,7 @@ export default function App () {
                 })
                 resetIt()
             } else {
-                setTimeout(() => resetIt(), 1000) // ponerle 1 segundos de espera
+                setTimeout(() => resetIt(), 1000) // ponerle 1 segundo de espera
             }
         } 
     }, [choiceOne, choiceTwo])
@@ -66,12 +68,15 @@ export default function App () {
         shuffleCards()
     }, [])
 
+    useEffect(() => {
+        if (condition) {
+            // no he terminado esta parte
+        }
+    }, [won])
+
     return (
         <div className='App'>
-            <h1>Royale Memory Game</h1>
-            <button onClick={shuffleCards}>Restart</button>
-            <p>Jugadas: {turns}</p>
-            <div className='card-grid'>
+            <div className='card-grid inside-app'>
                 {cards.map(card => (
                     <Card key={card.id} card={card} handleChoice={handleChoice}
                         flipped={card === choiceOne || card === choiceTwo || card.matched}
@@ -79,7 +84,21 @@ export default function App () {
                     />  
                 ))}
             </div>
-            <p>Laboratorio 8. Roberto Rios, 20979.</p>
+            <div>
+                <div className='inside-app'>
+                    <h1>ROYALE MEMORY GAME</h1>
+                    <button onClick={shuffleCards}>RESTART</button>
+                    <p>JUGADAS: {turns}</p>
+                    <p>LABORATORIO 8. ROBERTO RIOS, 20979.</p>
+                    <button onClick={() => setWon(!won)}>Ye</button>
+                </div>
+                <div className='king'>
+                        {
+                            won && <p>Felicidades, Ganaste! JIJIJIJA!</p>
+                        }
+                        <img src='/img/king.png' alt='king' height={350}/>
+                </div>
+            </div>
         </div>
     );
 }

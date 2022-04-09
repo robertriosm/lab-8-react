@@ -24,6 +24,17 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
+            {
+                test: /\.ttf$/, /**queria usar font personalizada pero costaba dinero */
+                use: [
+                    {
+                        loader: 'ttf-loader',
+                        options: {
+                            name: './font/[hash].[ext]',
+                        },
+                    },
+                ]
+            }   
         ]
     },
     plugins: [

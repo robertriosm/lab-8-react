@@ -2,30 +2,30 @@
 
 * {
     font-family: 'Fredoka One';
+    color: white;
 }
 
 h1, p {
-    color: white;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
 body {
     background: url('/public/img/bg.png');
     margin: 0;
     text-align: center;
-    font-size: 1.5em;
 }
 
 .App {
-    max-width: 860px;
-    margin: 40px auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .card-grid {
-    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
-}   
+}
 
 .card {
     position: relative;
@@ -33,7 +33,6 @@ body {
 
 .card img {
     width: 50%;
-    display: block;
 }
 
 .card .front {
@@ -55,4 +54,34 @@ body {
 .flipped .back {
     transform: rotateY(90deg);
     transition-delay: 0s;
+}
+
+button {
+    text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 0.5px 0.5px black, -0.5px -0.5px 0 black, 0.5px -0.5px 0 black, -0.5px 0.5px 0 black;
+    border: 2px solid black;
+    border-bottom: 3px;
+    border-radius: 8px;
+    border-style: outset;
+    background-color: rgb(255, 208, 0);
+    height: 2rem;
+    width: 8rem;
+}
+
+.inside-app {
+    flex: 1;
+}
+
+.inside-app:first-child{
+    margin-right: 30px;
+}
+
+.king {
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.king > img {
+    position: absolute;
+    right: 90px;
+    bottom: 40px;
 }
