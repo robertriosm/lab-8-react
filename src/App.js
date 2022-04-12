@@ -2,6 +2,9 @@ import './index.css'
 import React, { useState, useEffect } from 'react'
 import Card from './components/Card'
 
+/**
+ * este array sirve para crear las 16 cartas y relacionar dos
+ */
 const cardImages = [
     {"src": "/img/mini_pekka.png", matched: false },
     {"src": "/img/valkyrie.png", matched: false },
@@ -11,16 +14,31 @@ const cardImages = [
     {"src": "/img/wizard.png", matched: false },
     {"src": "/img/mega_knight.png", matched: false },
     {"src": "/img/princess.png", matched: false },
-]
+] 
 
+/**
+ * componente App
+ * @returns el tablero con las 16 cartas y la info del juego
+ */
 export default function App () {
+    // array con 8 pares de cartas
     const [cards, setCards] = useState([])
+    // contador de jugadas hechas por el jugador
     const [turns, setTurns] = useState(0)
+    // primer match de dos cartas iguales
     const [choiceOne, setChoiceOne] = useState(null)
+    // segundo match de dos cartas iguales
     const [choiceTwo, setChoiceTwo] = useState(null)
+    // estado de una carta volteada
     const [disabled, setDisabled] = useState(false)
+    // estado donde un jugador ya hizo match todas las cartas
     const [won, setWon] = useState(false)
 
+    /**
+     * funcion que inicia/reinicia el juego
+     * genera las posiciones en el array al azar asignandoles las imagenes
+     * de cardImages a cards
+     */
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
             .sort(() => Math.random() - 0.5)
@@ -33,10 +51,18 @@ export default function App () {
         setWon(false)
     }
 
+    /**
+     * funcion que evalua el match de una carta con su pareja
+     * @param {*} card cada carta en el array cards
+     */
     const handleChoice = (card) => {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
     }
 
+    /**
+     * efecto para evaluar si las cartas seleccionadas hacen match,
+     * si hacen match, se quedan levantadas, si no se vuelven a voltear
+     */
     useEffect(() => {
         if (choiceOne && choiceTwo) {
             setDisabled(true)
@@ -57,6 +83,9 @@ export default function App () {
         } 
     }, [choiceOne, choiceTwo])
 
+    /**
+     * funcion para voltear las cartas si no hacen match, se llama por el efecto arriba
+     */
     const resetIt = () => {
         setChoiceOne(null)
         setChoiceTwo(null)
@@ -64,16 +93,36 @@ export default function App () {
         setDisabled(false)
     }
 
+    /**
+     * efecto para revolver las cartas al iniciar la app
+     */
     useEffect(() => {
         shuffleCards()
     }, [])
 
-    useEffect(() => {
-        if (condition) {
-            // no he terminado esta parte
+    /**
+     * funcion para verificar si todas las cartas estan levantadas,
+     * si lo estan el jugador gano el juego
+     */
+    const checkWin = () => {
+        var matches = cards.map(function(i) {
+            return i.matched;
+        })
+        if (matches.every(v => v === true)) {
+            setWon(true)
         }
-    }, [won])
+    } 
 
+    /**
+     * efecto para ver si el jugador ha ganado el juego
+     */
+    useEffect(() => {
+        checkWin()
+    })
+
+    /**
+     * mostrar en el dom el juego
+     */
     return (
         <div className='App'>
             <div className='card-grid inside-app'>
@@ -90,7 +139,6 @@ export default function App () {
                     <button onClick={shuffleCards}>RESTART</button>
                     <p>JUGADAS: {turns}</p>
                     <p>LABORATORIO 8. ROBERTO RIOS, 20979.</p>
-                    <button onClick={() => setWon(!won)}>Ye</button>
                 </div>
                 <div className='king'>
                         {
