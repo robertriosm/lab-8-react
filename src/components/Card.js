@@ -1,4 +1,5 @@
 import '../index.css'
+import cardback from '../../public/img/cardback.png'
 
 /**
  * componente carta
@@ -23,7 +24,7 @@ export default function Card({ card, handleChoice, flipped, disabled }) {
         <div className='card'>
             <div className={flipped ? "flipped" : ""}>
                 <img className='front' src={card.src} alt='card front'/>
-                <img className='back' src='/img/cardback.png' onClick={cardClick} alt='card back'/>
+                <img className='back' src={cardback} onClick={cardClick} alt='card back'/>
             </div>
         </div>
     )

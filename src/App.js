@@ -1,20 +1,29 @@
 import './index.css'
 import React, { useState, useEffect } from 'react'
 import Card from './components/Card'
+import minipekka from '../public/img/mini_pekka.png'
+import mega_knight from '../public/img/mega_knight.png'
+import king from '../public/img/king.png'
+import prince from '../public/img/prince.png'
+import princess from '../public/img/princess.png'
+import royal_giant from '../public/img/royal_giant.png'
+import skeletons from '../public/img/skeletons.png'
+import valkyrie from '../public/img/valkyrie.png'
+import wizard from '../public/img/wizard.png'
 
 /**
  * este array sirve para crear las 16 cartas y relacionar dos
  */
 const cardImages = [
-    {"src": "/img/mini_pekka.png", matched: false },
-    {"src": "/img/valkyrie.png", matched: false },
-    {"src": "/img/prince.png", matched: false },
-    {"src": "/img/skeletons.png", matched: false },
-    {"src": "/img/royal_giant.png", matched: false },
-    {"src": "/img/wizard.png", matched: false },
-    {"src": "/img/mega_knight.png", matched: false },
-    {"src": "/img/princess.png", matched: false },
-] 
+    {"src": minipekka, matched: false },
+    {"src": valkyrie, matched: false },
+    {"src": prince, matched: false },
+    {"src": skeletons, matched: false },
+    {"src": royal_giant, matched: false },
+    {"src": wizard, matched: false },
+    {"src": mega_knight, matched: false },
+    {"src": princess, matched: false },
+]
 
 /**
  * componente App
@@ -144,7 +153,7 @@ export default function App () {
                         {
                             won && <p>Felicidades, Ganaste! JIJIJIJA!</p>
                         }
-                        <img src='/img/king.png' alt='king' height={350}/>
+                        <img src={king} alt='king' height={350}/>
                 </div>
             </div>
         </div>
