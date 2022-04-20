@@ -25,7 +25,7 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
-                test: /\.ttf$/, /**queria usar font personalizada pero costaba dinero */
+                test: /\.ttf$/,
                 use: [
                     {
                         loader: 'ttf-loader',
@@ -34,7 +34,7 @@ module.exports = {
                         },
                     },
                 ]
-            }   
+            }
         ]
     },
     plugins: [
