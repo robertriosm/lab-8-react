@@ -1,87 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 * {
-    font-family: 'Fredoka One';
-    color: white;
+  font-family: 'Fredoka One';
+  color: white;
 }
 
-h1, p {
-    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+h1,
+p {
+  text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black,
+    1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
 body {
-    background: url('/public/img/bg.png');
-    margin: 0;
-    text-align: center;
+  background: url('/public/img/bg.png');
+  margin: 0;
+  text-align: center;
 }
 
 .App {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 
 .card {
-    position: relative;
+  position: relative;
 }
 
 .card img {
-    width: 50%;
+  width: 50%;
 }
 
 .card .front {
-    transform: rotateY(90deg);
-    transition: all ease-in 0.2s;
-    position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute;
 }
 
 .flipped .front {
-    transform: rotateY(0deg);
-    transition-delay: 0.2s;
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
 }
 
 .card .back {
-    transition: all ease-in 0.2s;
-    transition-delay: 0.2s;
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
 }
 
 .flipped .back {
-    transform: rotateY(90deg);
-    transition-delay: 0s;
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
 
 button {
-    text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 0.5px 0.5px black, -0.5px -0.5px 0 black, 0.5px -0.5px 0 black, -0.5px 0.5px 0 black;
-    border: 2px solid black;
-    border-bottom: 3px;
-    border-radius: 8px;
-    border-style: outset;
-    background-color: rgb(255, 208, 0);
-    height: 2rem;
-    width: 8rem;
+  text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black,
+    0.5px 0.5px black, -0.5px -0.5px 0 black, 0.5px -0.5px 0 black,
+    -0.5px 0.5px 0 black;
+  border: 2px solid black;
+  border-bottom: 3px;
+  border-radius: 8px;
+  border-style: outset;
+  background-color: rgb(255, 208, 0);
+  height: 2rem;
+  width: 8rem;
 }
 
 .inside-app {
-    flex: 1;
+  flex: 1;
 }
 
-.inside-app:first-child{
-    margin-right: 30px;
+.inside-app:first-child {
+  margin-right: 30px;
 }
 
 .king {
-    margin-right: 30px;
-    margin-top: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
 }
 
 .king > img {
-    position: absolute;
-    right: 90px;
-    bottom: 40px;
+  position: absolute;
+  right: 90px;
+  bottom: 40px;
 }
